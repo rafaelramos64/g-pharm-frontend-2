@@ -5,15 +5,16 @@
         <h1 class="mb-3">Login</h1>
         <b-form-group
           id="input-group-1"
-          label="Email"
-          label-for="input-1"
+          label="E-mail"
+          description="Informe seu melhor e-mail"
+          label-for="email"
           class="text-left"
         >
           <b-form-input
-            id="input-1"
+            id="email"
             v-model="form.email"
             type="email"
-            placeholder="Enter email"
+            placeholder="Informe um e-mail"
             required
           ></b-form-input>
         </b-form-group>
@@ -29,16 +30,19 @@
             id="password"
             aria-describedby="password-help-block"
             v-model="form.password"
+            placeholder="Informe uma senha"
             required
           ></b-form-input>
         </b-form-group>
 
         <b-button type="submit" variant="success">Submit</b-button>
       </b-form>
+      <div class="mt-3">
+        <p>
+          Ainda não é um inscrito? <b-link to="/signup">Inscrever-se</b-link>
+        </p>
+      </div>
     </b-row>
-    <b-card class="mt-3" header="Form Data Result">
-      <pre class="m-0">{{ form }}</pre>
-    </b-card>
   </b-container>
 </template>
 
@@ -59,7 +63,7 @@ export default {
 
       const { email, password } = this.form;
       try {
-        const response = await this.$axios.post("/pharmacies/auth", {
+        const dataAuthPharmacie = await this.$axios.post("/pharmacies/auth", {
           email,
           password,
         });
@@ -68,7 +72,11 @@ export default {
           icon: "success",
           title: "Login efetuado com sucesso",
         });
-        this.$storage.setItem("application-token", response.data.token);
+
+        this.$storage.setItem(
+          "application-token",
+          dataAuthPharmacie.data.token
+        );
       } catch (error) {
         console.log(error);
         this.$swal({
