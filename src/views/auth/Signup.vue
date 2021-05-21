@@ -112,6 +112,8 @@ export default {
           "application-token",
           dataCreatePharmacie.data.token
         );
+
+        this.$router.push("/");
       } catch (error) {
         console.log(error);
         this.$swal({
