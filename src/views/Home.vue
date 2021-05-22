@@ -1,15 +1,18 @@
 <template>
-  <Navbar />
+  <b-container>
+    <b-row>
+    <h1>
+      ramos
+    </h1>
+    </b-row>
+  </b-container>
 </template>
 
 <script>
-// @ is an alias to /src
-import Navbar from "../components/Navbar.vue";
 
 export default {
   name: "Home",
   components: {
-    Navbar,
   },
 };
 </script>

@@ -1,7 +1,7 @@
 import axios from "axios";
 import Vue from "vue";
 
-axios.defaults.baseURL = "http://localhost:3333/api";
+axios.defaults.baseURL = "https://g-pharm-backend-2.herokuapp.com/api";
 
 Vue.use({
   install(Vue) {

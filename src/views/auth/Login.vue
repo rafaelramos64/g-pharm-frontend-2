@@ -1,7 +1,10 @@
 <template>
   <b-container>
     <b-row>
-      <b-form @submit="onSubmit" class="centralize">
+      <b-form
+        @submit.prevent.stop="onSubmit"
+        class="centralize"
+      >
         <h1 class="mb-3">Login</h1>
         <b-form-group
           id="input-group-1"
@@ -35,7 +38,10 @@
           ></b-form-input>
         </b-form-group>
 
-        <b-button type="submit" variant="success">Submit</b-button>
+        <b-button
+          type="submit"
+          variant="success"
+        >Submit</b-button>
       </b-form>
       <div class="mt-3">
         <p>
@@ -49,7 +55,7 @@
 <script>
 export default {
   name: "Login",
-  data() {
+  data () {
     return {
       form: {
         email: "",
@@ -58,8 +64,7 @@ export default {
     };
   },
   methods: {
-    async onSubmit(event) {
-      event.preventDefault();
+    async onSubmit () {
 
       const { email, password } = this.form;
       try {
@@ -77,6 +82,8 @@ export default {
           "application-token",
           dataAuthPharmacie.data.token
         );
+
+        this.$router.push({name: "home"})
       } catch (error) {
         console.log(error);
         this.$swal({

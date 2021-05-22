@@ -8,6 +8,9 @@ import VueSweetalert2 from "vue-sweetalert2";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 
+import "@fortawesome/fontawesome-free/css/all.css";
+import "@fortawesome/fontawesome-free/js/all.js";
+
 // Import services
 import "./services/axios";
 import "./services/localstorage";

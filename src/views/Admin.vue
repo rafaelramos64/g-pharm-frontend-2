@@ -1,19 +1,22 @@
 <template>
   <b-container>
-    <medicinesRegistration />
+    <ListMedicines />
+
+    <MedicinesRegistration v-if="true" />
   </b-container>
 </template>
 
 <script>
-import medicinesRegistration from "../components/medicinesRegistration"
+
+import ListMedicines from "../components/ListMedicines";
+import MedicinesRegistration from "../components/MedicinesRegistration";
+
 export default {
-  components: { medicinesRegistration },
-  data () {
-    return {}
-  }
-}
+  components: { MedicinesRegistration, ListMedicines },
+  data() {
+    return {};
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
