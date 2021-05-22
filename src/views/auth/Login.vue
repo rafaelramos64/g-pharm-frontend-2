@@ -83,7 +83,8 @@ export default {
           dataAuthPharmacie.data.token
         );
 
-        this.$router.push({name: "home"})
+        this.$router.push({ name: "Default" });
+
       } catch (error) {
         console.log(error);
         this.$swal({

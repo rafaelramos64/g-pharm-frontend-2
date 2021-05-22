@@ -1,12 +1,12 @@
 <template>
-  <b-navbar class="p-3 shadow bg-white">
-    <b-navbar-brand href="#">NavBar</b-navbar-brand>
+  <b-navbar class="px-5 py-3 shadow bg-white">
+    <b-navbar-brand href="#">G-Pharm</b-navbar-brand>
 
     <!-- <b-navbar-toggle target="nav-collapse"></b-navbar-toggle> -->
     <div>
-      <router-link :to="{name: 'MedicinesRegistration'}">
+      <router-link :to="{ name: 'MedicinesRegistration' }">
         <b-button
-          class="mr-4"
+          class="mr-0"
           variant="outline-info"
         >
           <span><i class="fas fa-plus"></i></span> Medicamentos
@@ -14,12 +14,14 @@
       </router-link>
     </div>
 
-    <b-button
-      variant="outline-info"
-      @click="listMedicines"
-    >
-      Lista de Medicamentos 11
-    </b-button>
+    <router-link :to="{ name: 'ListMedicines' }">
+      <b-button
+        variant="outline-info"
+        @click="listMedicines"
+      >
+        Lista de Medicamentos
+      </b-button>
+    </router-link>
   </b-navbar>
 
 </template>
@@ -33,9 +35,13 @@ export default {
 
   methods: {
     listMedicines () {
-      console.log("dsdas", this.$route.params.view = "listaDeMedicamentos")
-      return this.$route.params.view = "listaDeMedicamentos"
     }
   }
 }
 </script>
+
+<style scoped>
+.navbar-expand {
+  justify-content: space-between !important;
+}
+</style>

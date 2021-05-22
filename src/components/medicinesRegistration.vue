@@ -1,8 +1,12 @@
 <template>
   <b-container fluid>
-    <b-row class="justify-content-md-center">
+  <Loader v-if="loading"> </Loader>
+    <b-row v-else class="justify-content-md-center">
       <b-col md="8">
-        <b-form @submit.prevent="editOrCreate()" class="centralize">
+        <b-form
+          @submit.prevent="editOrCreateMedicine()"
+          class="centralize"
+        >
           <h1 class="mb-3 mt-3 text-center">Cadastro de Medicamento</h1>
           <b-form-group
             id="input-group-name"
@@ -101,7 +105,10 @@
             ></b-form-input>
           </b-form-group>
 
-          <b-button type="submit" variant="outline-success">Salvar</b-button>
+          <b-button
+            type="submit"
+            variant="outline-success"
+          >Salvar</b-button>
         </b-form>
       </b-col>
     </b-row>
@@ -109,8 +116,11 @@
 </template>
 
 <script>
+import Loader from "../components/Loader"
+
 export default {
-  data() {
+  components: { Loader },
+  data () {
     return {
       id: null,
       medicine: {
@@ -119,36 +129,36 @@ export default {
         purchaseDate: "",
         dueDate: "",
         stock: undefined,
+        loading: false
       },
     };
   },
-  
-  created() {
-    this.id =this.$route.params.id
-    console.log(this.id);
+
+  created () {
+    this.id = this.$route.params.id;
+
+    
+  },
+
+  mounted() {
     if (this.id) {
-      console.log('tem id');
-    }
+      this.loading = true;
+      this.getMedicineById();
+      this.loading = false;
+    };
   },
 
   methods: {
-    editOrCreate(){
+    editOrCreateMedicine () {
       if (this.id) {
-      this.medicineEdit()
-    } else {
-      this.medicineRegister()
-    }
+        this.medicineEdit();
+      } else {
+        this.medicineRegister();
+      }
     },
-    medicineEdit(){
 
-    },
     async medicineRegister () {
       const { name, price, purchaseDate, dueDate, stock } = this.medicine;
-      const token = this.$storage.getItem("application-token")
-
-      const headers = {
-        "Authorization": `Bearer ${token}`
-      };
 
       try {
         await this.$axios.post(
@@ -160,7 +170,6 @@ export default {
             dueDate,
             stock,
           },
-          headers
         );
 
         this.$swal({
@@ -176,6 +185,20 @@ export default {
         });
       }
     },
+
+    async getMedicineById () {
+      
+      const res = await this.$axios.get(`/medicines/${this.id}/perid`);
+      this.medicine = res.data[0];
+      
+      this.loading = false;
+    },
+
+    async medicineEdit () {
+
+    },
+
+    
   },
 };
 </script>

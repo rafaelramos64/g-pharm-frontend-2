@@ -2,7 +2,7 @@
   <b-container>
     <b-row>
     <h1>
-      ramos
+      Bem vindo ao G-Pharm
     </h1>
     </b-row>
   </b-container>

@@ -13,7 +13,7 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/default",
+    path: "/pharmacie-admin",
     name: "Default",
     component: Default,
     redirect: "Home",
@@ -29,12 +29,12 @@ const routes = [
         component: ListMedicines,
       },
       {
-        path: "form",
+        path: "register-medicine",
         name: "MedicinesRegistration",
         component: MedicinesRegistration,
       },
       {
-        path: "form/:id",
+        path: "medicine/:id",
         name: "MedicinesRegistrationEdit",
         component: MedicinesRegistration,
       },
@@ -43,7 +43,6 @@ const routes = [
         name: "Admin",
         component: Admin,
       },
-      
     ]
   },
   {
