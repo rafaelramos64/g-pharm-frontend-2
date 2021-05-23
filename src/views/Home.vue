@@ -1,9 +1,9 @@
 <template>
   <b-container>
-    <b-row>
-    <h1>
-      Bem vindo ao G-Pharm
-    </h1>
+    <b-row class="text-center">
+      <h1 class="mt-5">
+        Bem vindo ao G-Pharm
+      </h1>
     </b-row>
   </b-container>
 </template>

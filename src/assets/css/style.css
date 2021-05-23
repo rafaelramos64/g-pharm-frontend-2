@@ -1,0 +1,37 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 auto;
+}
+
+.btn {
+  font-family: 'Prociono' !important;
+}
+
+.btn:hover {
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 10%), 0 6px 9px rgb(0 0 0 / 20%) !important;
+}
+
+h1, h2 {
+  font-family: 'Prociono' !important;
+}
+
+.btn-outline-success {
+  /* background-color: #C1EAF2; */
+  border-color: #38C172 !important;
+  color: #38C172 !important;
+  font-family: 'Prociono' !important;
+  border-radius: 10px !important;
+  font-family: 'Prociono' !important;
+}
+
+.btn-outline-success:hover {
+  /* background: linear-gradient(to left bottom, rgb(179, 247, 255) 0%, rgb(179, 255, 214) 100%); */
+  background-color: #13c09d !important;
+  color: #fff !important;
+  border-color: #13c09d !important;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 10%), 0 6px 9px rgb(0 0 0 / 20%) !important;
+  /* box-shadow: 0 1px 3px 0 rgb(60 64 67 / 30%), 0 4px 8px 3px rgb(60 64 67 / 15%); */
+}
