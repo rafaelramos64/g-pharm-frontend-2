@@ -122,7 +122,7 @@
             </b-col>
           </b-row>
 
-          <b-row  align-h="end">
+          <b-row align-h="end">
             <b-col cols="4">
               <b-button
                 v-if="!this.id"
@@ -152,6 +152,7 @@
 import Loader from "../components/Loader"
 
 export default {
+  name: "MedicinesRegistration",
   components: { Loader },
   data () {
     return {
@@ -170,7 +171,6 @@ export default {
   created () {
     this.id = this.$route.params.id;
     if (this.id) {
-      
       this.getMedicineById();
     };
     
@@ -203,13 +203,21 @@ export default {
         this.$swal({
           icon: "success",
           title: "Medicamento cadastrado com sucesso!",
+          timer: 1500
         });
+
+        this.medicine.name = "";
+        this.medicine.price = undefined;
+        this.medicine.purchaseDate = "";
+        this.medicine.dueDate = "";
+        this.medicine.stock = undefined;
+
       } catch (error) {
         console.log(error);
         this.$swal({
           icon: "error",
           title: "Oops...",
-          text: "Informe dados válidos",
+          text: "Informe dados válidos"
         });
       }
     },
@@ -228,29 +236,32 @@ export default {
         const { name, price, purchaseDate, dueDate, stock } = this.medicine;
 
         await this.$axios.put(
-          `/medicines, ${
+          `/medicines/${this.id}`,
+          {
             name,
             price,
             purchaseDate,
             dueDate,
             stock
-          }, ${this.id}`);
-        /* await this.$axios.put(`/medicines${
-            name,
-            price,
-            purchaseDate,
-            dueDate,
-            stock,
-          }/${this.id}`); */
-
-        /* this.$router.push({ name: "ListMedicines" }) */;
+          });
 
         this.$swal({
           icon: "success",
           title: "Medicamento alterado com sucesso!",
+          timer: 1500
         });
+
+        setTimeout( () => {
+          this.$router.push({ name: "ListMedicines"});
+        }, 1100);
+
       } catch (error) {
         console.error(error);
+        this.$swal({
+          icon: "error",
+          title: "Oops!",
+          text: "Algo deu errado na alteração do medicamento."
+        });
       };
     },
 

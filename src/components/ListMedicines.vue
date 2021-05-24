@@ -39,6 +39,7 @@
 import Loader from "../components/Loader";
 
 export default {
+  name: "ListMedicines",
   components: { Loader },
   data () {
     return {
@@ -89,8 +90,7 @@ export default {
       this.$router.push({ name:'MedicinesRegistrationEdit', params:{id} });
     },
 
-    async deleteById (id) {
-      const idToDelete = id;
+    async deleteById (idToDelete) {
       this.$swal.fire({
         title: 'Você tem certeza?',
         text: 'Você está deletando este medicamento.',

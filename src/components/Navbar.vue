@@ -12,7 +12,7 @@
             <router-link class="nav-link" :to="{ name: 'MedicinesRegistration' }">
               <b-button
                 class="mr-0"
-                variant="outline-info"
+                variant="outline-success"
               >
                 <span><i class="fas fa-plus"></i></span> Medicamentos
               </b-button>
@@ -21,7 +21,7 @@
           <li class="nav-item active">
             <router-link class="nav-link" :to="{ name: 'ListMedicines' }">
               <b-button
-                variant="outline-info"
+                variant="outline-success"
                 @click="listMedicines"
               >
                 Lista de Medicamentos

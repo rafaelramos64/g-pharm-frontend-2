@@ -8,6 +8,7 @@ body {
 
 .btn {
   font-family: 'Prociono' !important;
+  font-size: 17px !important;
 }
 
 .btn:hover {
@@ -32,6 +33,56 @@ h1, h2 {
   background-color: #13c09d !important;
   color: #fff !important;
   border-color: #13c09d !important;
-  box-shadow: 0 0 0 1px rgb(0 0 0 / 10%), 0 6px 9px rgb(0 0 0 / 20%) !important;
-  /* box-shadow: 0 1px 3px 0 rgb(60 64 67 / 30%), 0 4px 8px 3px rgb(60 64 67 / 15%); */
+  /* box-shadow: 0 0 0 1px rgb(0 0 0 / 10%), 0 6px 9px rgb(0 0 0 / 20%) !important; */
+  /* box-shadow: 0 1px 3px 0 rgb(60 64 67 / 30%), 0 4px 8px 3px rgb(60 64 67 / 15%) !important; */
+}
+
+.form-control {
+  color: rgb(118, 118, 118) !important;
+  border-bottom: 1.5px solid rgb(130, 130, 130) !important;
+  background-color: transparent !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  padding-left: 3rem !important;
+}
+
+.icons-forms {
+  color: rgb(118, 118, 118) !important;
+  position: relative;
+  bottom: -2rem !important;
+  left: 0.8rem !important;
+  background-color: #fff !important;
+}
+
+.icons-forms:focus {
+  color: #38C172 !important;
+}
+
+label {
+  padding-left: 10px !important;
+  margin: 0 !important;
+  bottom: -15px;
+}
+
+.form-control:hover {
+  box-shadow: none !important;
+}
+
+.form-control:focus {
+  box-shadow: none !important;
+  border-bottom: 2px solid #38C172 !important;
+}
+
+.required {
+  position: relative;
+  display: inline-block !important;
+}
+
+.required::after {
+  content: "*";
+  font-weight: bold;
+  display: inline-block;
+  color: #ce242a;
+  margin-left: 2px;
 }
