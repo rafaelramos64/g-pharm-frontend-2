@@ -23,21 +23,43 @@ const routes = [
         name: "Home",
         component: Home,
       },
+
       {
-        path: "list",
-        name: "ListMedicines",
-        component: ListMedicines,
-      },
-      {
-        path: "register-medicine",
+        path: "medicine-register",
         name: "MedicinesRegistration",
         component: MedicinesRegistration,
       },
+
+      {
+        path: "medicines-list",
+        name: "ListMedicines",
+        component: ListMedicines,
+      },
+
+      {
+        path: "vendor-registration",
+        name: "VendorsRegistration",
+        component: () => import("@/components/VendorsRegistration")
+      },
+
+      {
+        path: "sale-registration",
+        name: "SalesRegistration",
+        component: () => import("@/components/SalesRegistration")
+      },
+
+      {
+        path: "list-sales",
+        name: "SalesList",
+        component: () => import("@/components/SalesList")
+      },
+      
       {
         path: "medicine/:id",
         name: "MedicinesRegistrationEdit",
         component: MedicinesRegistration,
       },
+
       {
         path: "/admin",
         name: "Admin",

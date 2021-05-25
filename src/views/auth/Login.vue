@@ -1,12 +1,13 @@
 <template>
-  <b-container class="pt-3">
-    <b-row class="login shadow   h-100 justify-content-center align-items-center" >
+  <b-container class="pt-4">
+    <b-row class="login shadow h-100 justify-content-center align-items-center" >
       <b-col md="12" class="p-0">
         <b-row class="text-center"><b-col><h1 style="font-weight: 800">Login</h1></b-col></b-row>
       </b-col>
       <b-col class="pl-5 pr-5" style="top: 0rem;">
         <b-form @submit.prevent.stop="onSubmit">
           <b-form-group
+            class="group"
             label="Email"
             label-for="email"
             label-class="required"
@@ -26,7 +27,7 @@
             label-for="password"
             label-class="required"
           >
-            <span class="icons-forms"><i class="fas fa-lock fa-lg"></i></span>
+            <span class="icons-forms"><i class="fas fa-lock-open fa-lg"></i></span>
             <b-form-input
               v-model="form.password"
               autocomplete="off"
@@ -50,7 +51,7 @@
             <b-col>
               <div class="text-center">
                 <p>
-                  Ainda não tem conta? <b-link to="/signup">Cadastre-se</b-link>
+                  Ainda não tem conta? <b-link :to="{ name: 'Signup' }">Cadastre-se</b-link>.
                 </p>
               </div>
             </b-col>
@@ -85,6 +86,8 @@ export default {
         this.$swal({
           icon: "success",
           title: "Login efetuado com sucesso",
+          confirmButtonColor: '#38C172',
+          timer: 1500
         });
 
         this.$storage.setItem(
@@ -99,6 +102,7 @@ export default {
         this.$swal({
           icon: "error",
           title: "Oops...",
+          confirmButtonColor: '#38C172',
           text: "Informe dados válidos",
         });
       }
@@ -122,14 +126,6 @@ export default {
   border: 1px solid #f8f8f8;
   /* box-shadow: 0px 5px 10px 0px rgba(153, 153, 153, 0.3); */
   /* box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 6px 0px; */
-}
-
-/* Changes for Logar Button */
-.login-button {
-  padding: 0 20px !important;
-  width: 100%;
-  height: 45px;
-  font-size: 1.5rem;
 }
 
 a {

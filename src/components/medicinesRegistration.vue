@@ -1,10 +1,10 @@
 <template>
   <b-container fluid>
   <Loader v-if="loading"> </Loader>
-    <b-row v-else class="justify-content-md-center mt-3">
+    <b-row v-else class="justify-content-md-center mt-4">
       <b-col
         class="shadow-lg border border-light"
-        md="6"
+        md="7"
         style="border-radius: 10px;">
         <h1 v-if="!this.id" class="mb-1 mt-3 text-center">Cadastro de Medicamentos</h1>
         <h1 v-else class="mb-1 mt-3 text-center">Editar Medicamento</h1>
@@ -20,6 +20,7 @@
             class="text-left my-3"
           >
             <b-form-input
+              style="padding-left: 5px"
               autocomplete="off"
               id="name"
               v-model="medicine.name"
@@ -38,9 +39,8 @@
                 label-for="price"
                 class="text-left my-3"
               >
-                <b-input-group prepend="$">
+                <b-input-group prepend="R$">
                   <b-form-input
-                    style="border-left: none"
                     autocomplete="off"
                     id="price"
                     v-model="medicine.price"
@@ -59,7 +59,8 @@
                 label="Quantidade em estoque"
                 description="Informe a quantidade do medicamento em estoque."
                 label-for="stock"
-                class="text-left my-3"
+                class="text-left my-3 "
+                style="padding-left: 5px"
               >
                 <b-form-input
                   autocomplete="off"
@@ -123,21 +124,21 @@
           </b-row>
 
           <b-row align-h="end">
-            <b-col cols="4">
+            <b-col cols="6" class="mx-auto">
               <b-button
                 v-if="!this.id"
-                class="btn-lg"
+                class="btn-lg login-button"
                 type="submit"
                 variant="outline-success"
-                >Cadastrar
+                >CADASTRAR
               </b-button>
 
               <b-button
                 v-else
-                class="btn-lg"
+                class="btn-lg login-button"
                 type="submit"
                 variant="outline-success"
-                >Salvar
+                >SALVAR
               </b-button>
             </b-col>
           </b-row>
@@ -248,18 +249,20 @@ export default {
         this.$swal({
           icon: "success",
           title: "Medicamento alterado com sucesso!",
+          confirmButtonColor: '#38C172',
           timer: 1500
         });
 
         setTimeout( () => {
           this.$router.push({ name: "ListMedicines"});
-        }, 1100);
+        }, 1500);
 
       } catch (error) {
         console.error(error);
         this.$swal({
           icon: "error",
           title: "Oops!",
+          confirmButtonColor: '#38C172',
           text: "Algo deu errado na alteração do medicamento."
         });
       };
@@ -274,5 +277,20 @@ export default {
 .input-group-text {
   background-color: #fff !important;
   border-right: none !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-color: rgb(118, 118, 118) !important;
+  border-bottom-right-radius: 0px !important;
+  color: rgb(118, 118, 118) !important;
+}
+
+.form-control {
+  padding-left: 0 !important;
+}
+
+label {
+  padding-left: -10px !important;
+  margin: 0 !important;
+  bottom: -15px;
 }
 </style>

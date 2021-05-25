@@ -9,7 +9,7 @@
       <div>
         <ul class="navbar-nav" style="margin-left: auto">
           <li class="nav-item active">
-            <router-link class="nav-link" :to="{ name: 'MedicinesRegistration' }">
+            <router-link v-if="this.$route.name !== 'Home' " class="nav-link" :to="{ name: 'MedicinesRegistration' }">
               <b-button
                 class="mr-0"
                 variant="outline-success"
@@ -19,7 +19,7 @@
             </router-link>
           </li>
           <li class="nav-item active">
-            <router-link class="nav-link" :to="{ name: 'ListMedicines' }">
+            <router-link v-if="this.$route.name !== 'Home' " class="nav-link" :to="{ name: 'ListMedicines' }">
               <b-button
                 variant="outline-success"
                 @click="listMedicines"

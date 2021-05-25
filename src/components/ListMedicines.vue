@@ -10,11 +10,11 @@
           :fields="fields"
         >
           <template #cell(action)="data">
-            <div class="text-center">
+            <div class="text-center d-inline-flex-center">
               <b-button
                 v-b-tooltip.hover="{ variant: 'success' }" title="Editar medicamento"
                 @click="editById(data.item.id)">
-                <span style="color: #13c09d"><i class="far fa-edit fa-lg"></i></span>
+                <span style="color: #13c09d"><i class="fas fa-pencil-alt fa-lg"></i></span>
               </b-button>
               <b-button
                 v-b-tooltip.hover.v-danger title="Deletar medicamento"
@@ -86,6 +86,12 @@ export default {
   },
 
   methods: {
+    async getAllMedicines(){
+      const res = await this.$axios.get('medicines')
+      this.items = res.data;
+      this.loading = false;
+    },
+
     editById(id){
       this.$router.push({ name:'MedicinesRegistrationEdit', params:{id} });
     },
@@ -100,7 +106,7 @@ export default {
         confirmButtonText: 'Confirmar',
         denyButtonText: 'Cancelar',
         showCancelButton: true,
-        confirmButtonColor: '#17a2b8',
+        confirmButtonColor: '#38C172',
         cancelButtonColor: '#dc3545'
         }).then((result) => {
         if (result.isConfirmed) {
@@ -109,14 +115,23 @@ export default {
 
             this.$swal({
               icon: "success",
-              title: "Medicamento deletado com sucesso!"
+              title: "Medicamento deletado com sucesso!",
+              confirmButtonColor: '#38C172',
+              timer: 1500
             });
+
+            setTimeout(() => {
+              document.location.reload();
+            }, 1100)
+
           } catch (error) {
             console.log(error);
             this.$swal({
             icon: "error",
+            confirmButtonColor: '#38C172',
             title: "Oops...",
             text: "Erro ao deletar medicamento.",
+            timer: 1500
           });
           }
         };
@@ -126,11 +141,6 @@ export default {
     
     infoById () {
 
-    },
-    async getAllMedicines(){
-      const res = await this.$axios.get('medicines')
-      this.items = res.data;
-      this.loading = false;
     }
   },
 };
